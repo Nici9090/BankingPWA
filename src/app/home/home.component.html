@@ -1,0 +1,33 @@
+<!--  ##################################################
+ #
+ # home window
+ #
+ # Last Update:
+ # 2018-07-26 : create by Login/Registration template
+ # 2018-07-27 : link zu Konto- und EMpfängerübersicht
+ ################################################### -->
+
+
+<!-- <h1>Hi {{currentUser.firstName}}!</h1> -->
+<!-- <p>You're logged in with Angular 6!!</p> -->
+<!-- <h3>All registered users:</h3> -->
+<!-- <ul> -->
+<!--     <li *ngFor="let user of users"> -->
+<!--         {{user.username}} ({{user.firstName}} {{user.lastName}}) -->
+<!--         - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a> -->
+<!--     </li> -->
+<!-- </ul> -->
+<!-- <p><a [routerLink]="['/login']">Logout</a></p> -->
+
+
+<div>
+{{currentUser.firstName}} {{currentUser.lastName}}
+<a [routerLink]="['/login']">Logout</a>
+</div>
+
+
+<div>
+<a [routerLink]="['/konto-uebersicht']">Kontoübersicht</a>
+<a [routerLink]="['/empfaenger-uebersicht']">Empfängerübersicht</a>
+
+</div>
