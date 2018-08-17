@@ -1,11 +1,11 @@
-﻿//##################################################
+﻿// ##################################################
 //
 // Home Komponenten
 //
-//Last Update:
-//2018-07-27 : create
+// Last Update:
+// 2018-07-27 : create
 //
-//###################################################
+// ###################################################
 
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
@@ -13,7 +13,7 @@ import { first } from 'rxjs/operators';
 import { User } from '../_models';
 import { UserService } from '../_services';
 
-//import { Empfaenger } from '../_models';
+// import { Empfaenger } from '../_models';
 
 import { Konto } from '../_models';
 
@@ -32,14 +32,14 @@ export class HomeComponent implements OnInit {
     }
 
     deleteUser(id: number) {
-        this.userService.delete(id).pipe(first()).subscribe(() => { 
-            this.loadAllUsers() 
+        this.userService.delete(id).pipe(first()).subscribe(() => {
+            this.loadAllUsers();
         });
     }
 
     private loadAllUsers() {
-        this.userService.getAll().pipe(first()).subscribe(users => { 
-            this.users = users; 
+        this.userService.getAll().pipe(first()).subscribe(users => {
+            this.users = users;
         });
     }
 }

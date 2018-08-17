@@ -9,7 +9,7 @@
 
 
 
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable, of} from 'rxjs';
@@ -29,16 +29,11 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-
-
 export class KontoService {
 
- private kontenUrl = 'api/konto-uebersicht'; // URL to web api
+ private kontenUrl = 'api/konten'; // URL to web api
 
   constructor(private http: HttpClient) {}
-
-
-
 
 //Variante I: Wie im Tour of Heroes Beispiel
   // Get Konto by ID funktioniert nicht
@@ -61,6 +56,6 @@ export class KontoService {
 */
 
   getById(id: number) {
-    return this.http.get(`${environment.apiUrl}/konto-uebersicht/` + id);
+    return this.http.get(this.kontenUrl + id);
   }
 }

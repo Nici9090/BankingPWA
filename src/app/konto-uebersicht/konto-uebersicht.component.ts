@@ -24,73 +24,48 @@ import {Konto} from '../_models/konto';
 //import Module für mat-table für Kontoübersicht
 import {
   MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
-  MatSortModule, MatTableModule
+  MatSortModule, MatTableModule, MatTableDataSource
 } from "@angular/material";
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
-
-
 
 @Component({
   selector: 'app-konto-uebersicht',
   templateUrl: './konto-uebersicht.component.html',
   styleUrls: ['./konto-uebersicht.component.css']
 })
-
-
-//ngModule für Tabelle   
-@NgModule({
-  declarations: [
-    //... 
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatProgressSpinnerModule
-  ],
-  providers: [
-    //...
-  ],
-  bootstrap: [AppComponent] //??
-})
-
-
-
 export class KontoUebersichtComponent implements OnInit {
   konten: Konto[];
+  dataSource;
 
   constructor(
     private route: ActivatedRoute, //  holds information about the route to this instance of the HeroDetailComponent
-    private kontoService: KontoService, // gets hero data from the remote server and this component will use it to get the hero-to-display.
-    private location: Location // Angular service for interacting with the browser -> navigate back to the view that navigated here
+    private kontoService: KontoService // gets hero data from the remote server and this component will use it to get the hero-to-display.
+    //    private location: Location // Angular service for interacting with the browser -> navigate back to the view that navigated here
   ) {}
-
-
-
-
 
   //  ######################
   //  Tabelle Kontoübersicht
 
   //  The values of this array are the column keys, which need to be identical to the names of the ng-container column sections 
-  columnsToDisplay = ['id', 'iban', 'bic', 'bank', 'umsatz'];
+  columnsToDisplay = ['id', 'iban', 'bic', 'umsatz'];
 
 
   // click data row
   onRowClicked(row) {
     console.log('Row clicked: ', row); //Ausgabe in Konsole
   }
-  //  #####################  
 
   ngOnInit() {
-    this.getKonten();
+//    this.getKonten();
+
+    const tableArr: Konto[] = [
+      {id: 11, iban: 'DE02120300000000202051', bic: 'BYLADEM1001', umsatz: 1000.10},
+      {id: 12, iban: 'DE02500105170137075030', bic: 'INGDDEFF', umsatz: 2002.22},
+      {id: 13, iban: 'DE02100500000054540402', bic: 'BELADEBE', umsatz: 3030.03}
+    ];
+    this.dataSource = new MatTableDataSource(tableArr);
   }
 
   // Hero Template nur angepasst

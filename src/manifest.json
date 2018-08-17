@@ -1,0 +1,15 @@
+{
+  "name": "TolleBankingPWA",
+  "short_name": "TolleBankingPWA",
+  "start_url": ".",
+  "icons": [
+    {
+      "src": "assets/piggy-bank.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],  
+  "background_color": "#EEE",
+  "theme_color": "#1565c0",
+  "display": "standalone",
+  "orientation": "any"
+}
