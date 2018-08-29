@@ -14,13 +14,17 @@ import {AlertComponent} from './_directives';
 import {AuthGuard} from './_guards';
 import {JwtInterceptor, ErrorInterceptor} from './_helpers';
 import {AlertService, AuthenticationService, KontoService, UserService} from './_services';
-import { InMemoryDataService } from './_services/in-memory-data.service';
+import {InMemoryKontoService} from './_services/in-memory-data.service';
 import {HomeComponent} from './home';
 import {LoginComponent} from './login';
 import {RegisterComponent} from './register';;
 import {EmpfaengerUebersichtComponent} from './empfaenger-uebersicht/empfaenger-uebersicht.component';
 import {KontoUebersichtComponent} from './konto-uebersicht/konto-uebersicht.component'
-import {MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule} from '@angular/material';
+import {MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule} from '@angular/material';;
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
+import { UmsatzService } from './_services/umsatz.service';
+import { UmsatzUebersichtComponent } from './umsatz-uebersicht/umsatz-uebersicht.component';
 
 @NgModule({
   imports: [
@@ -34,24 +38,29 @@ import {MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule, MatPr
     MatSortModule,
     MatProgressSpinnerModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    )
-  ],
+      InMemoryKontoService, {dataEncapsulation: false}
+    ),
+//    HttpClientInMemoryWebApiModule.forRoot(
+//    InMemoryUmsatzService, {dataEncapsulation: false}
+//    ),
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})],
   declarations: [
     AppComponent,
     AlertComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
-    ,
+    RegisterComponent,
     EmpfaengerUebersichtComponent,
-    KontoUebersichtComponent],
+    KontoUebersichtComponent,
+    UmsatzUebersichtComponent
+  ],
   providers: [
     AuthGuard,
     AlertService,
     AuthenticationService,
     UserService,
     KontoService,
+    UmsatzService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
 

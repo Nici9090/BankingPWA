@@ -1,0 +1,24 @@
+
+<div class="table-responsive body-manage-attendees">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col" >IBAN</th>
+                <th class="text-right" scope="col">Umsatz</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let umsatz of this.umsaetze" 
+            		
+            		(mouseover)="selectedRow = umsatz" >
+                <td >{{ umsatz.id }}</td>
+                <td >{{ umsatz.ibanAbs }}</td>
+                <td class="text-right">{{ umsatz.umsatz }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2>{{this.iban}}</h2>
+<h3>{{this.umsaetze.length}}</h3>

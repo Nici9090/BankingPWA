@@ -20,12 +20,6 @@ import {ActivatedRoute} from '@angular/router';
 import {KontoService} from '../_services/konto.service';
 import {Konto} from '../_models/konto';
 
-
-//import Module für mat-table für Kontoübersicht
-import {
-  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
-  MatSortModule, MatTableModule, MatTableDataSource
-} from "@angular/material";
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -36,8 +30,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   styleUrls: ['./konto-uebersicht.component.css']
 })
 export class KontoUebersichtComponent implements OnInit {
+  selectedRow;
   konten: Konto[];
-  dataSource;
 
   constructor(
     private route: ActivatedRoute, //  holds information about the route to this instance of the HeroDetailComponent
@@ -45,27 +39,13 @@ export class KontoUebersichtComponent implements OnInit {
     //    private location: Location // Angular service for interacting with the browser -> navigate back to the view that navigated here
   ) {}
 
-  //  ######################
-  //  Tabelle Kontoübersicht
-
-  //  The values of this array are the column keys, which need to be identical to the names of the ng-container column sections 
-  columnsToDisplay = ['id', 'iban', 'bic', 'umsatz'];
-
-
-  // click data row
+  // ## Testing
   onRowClicked(row) {
     console.log('Row clicked: ', row); //Ausgabe in Konsole
   }
 
   ngOnInit() {
-//    this.getKonten();
-
-    const tableArr: Konto[] = [
-      {id: 11, iban: 'DE02120300000000202051', bic: 'BYLADEM1001', umsatz: 1000.10},
-      {id: 12, iban: 'DE02500105170137075030', bic: 'INGDDEFF', umsatz: 2002.22},
-      {id: 13, iban: 'DE02100500000054540402', bic: 'BELADEBE', umsatz: 3030.03}
-    ];
-    this.dataSource = new MatTableDataSource(tableArr);
+    this.getKonten();
   }
 
   // Hero Template nur angepasst
@@ -75,4 +55,11 @@ export class KontoUebersichtComponent implements OnInit {
       .subscribe(konten => this.konten = konten);
   }
 
+  getSelectedRow() {
+    if (this.selectedRow === undefined) {
+      return 'NOTHING';
+    } else {
+      return JSON.stringify(this.selectedRow);
+    }
+  }
 }

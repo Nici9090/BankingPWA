@@ -9,27 +9,30 @@
 //###################################################
 
 
+import {Konto} from '../_models/konto';
+import {Umsatz} from '../_models/umsatz';
 import {InMemoryDbService} from 'angular-in-memory-web-api';
 
-export class InMemoryDataService implements InMemoryDbService {
+export class InMemoryKontoService implements InMemoryDbService {
   createDb() {
     const konten = [
-      {id: 11, iban: 'DE02120300000000202051', bic: 'BYLADEM1001', umsatz: 1000.10},
-      {id: 12, iban: 'DE02500105170137075030', bic: 'INGDDEFF', umsatz: 2002.22},
-      {id: 13, iban: 'DE02100500000054540402', bic: 'BELADEBE', umsatz: 3030.03}
+      new Konto(11, 'DE02120300000000202051', 'BYLADEM1001', 1001.10),
+      new Konto(12, 'DE02500105170137075030', 'INGDDEFF', 2002.22),
+      new Konto(13, 'DE02100500000054540402', 'BELADEBE', 3030.03)
     ];
-    return {konten};
+    const umsaetze = [
+      new Umsatz(1, 'DE02120300000000202051', 'DE02500105170137075030', 'Verwendung test 1', 1.00, new Date('08/29/2018')),
+      new Umsatz(2, 'DE02120300000000202051', 'DE02500105170137075030', 'Verwendung test 2', 2.00, new Date('08/29/2018')),
+      new Umsatz(3, 'DE02120300000000202051', 'DE02500105170137075030', 'Verwendung test 3', 300, new Date('08/29/2018')),
+      new Umsatz(4, 'DE02120300000000202051', 'DE02500105170137075030', 'Verwendung test 4', 4.00, new Date('08/29/2018'))
+    ];
+    return {konten, umsaetze};
   }
 }
 
 
-//export class InMemoryDataService implements InMemoryDbService {
+//export class InMemoryUmsatzService implements InMemoryDbService {
 //  createDb() {
-//    const konten = [
-//      {   id: 11, iban: 'DE02120300000000202051', bic: 'BYLADEM1001', bank: 'DEUTSCHE KREDITBANK BERLIN', empfaenger: 'Empfänger1'},
-//      {   id: 12, iban: 'DE02500105170137075030', bic: 'INGDDEFF', bank: 'ING-DIBA', empfaenger: 'Empfänger2'},
-//      {   id: 13, iban: 'DE02100500000054540402', bic: 'BELADEBE', bank: 'LANDESBANK BERLIN', empfaenger: 'Empfänger3'}
-//    ];
-//    return {konten};
+//    return {umsaetze};
 //  }
 //}

@@ -1,50 +1,99 @@
 <!--  ##################################################
  #
- # Kontoübersicht window
+ # Kontoï¿½bersicht window
  #
  # Last Update:
  # 2018-07-27 : create 
- # 2018-08-05 : add Konto Übersicht Tabelle  tutorial: https://blog.angular-university.io/angular-material-data-table/
+ # 2018-08-05 : add Konto ï¿½bersicht Tabelle  tutorial: https://blog.angular-university.io/angular-material-data-table/
  ################################################### -->
- 
- <p>
-  konto-uebersicht works!
-</p>  
-  
+
+
+
 <!-- #######################   -->
-<!-- Konto Übersicht Tabelle   -->
-  <mat-table [dataSource]="dataSource">
-  
-  <ng-container matColumnDef="id">
-  <th mat-header-cell *matHeaderCellDef> Konto </th>
-  <td mat-cell *matCellDef="let konto"> {{konto.id}} </td>
-</ng-container>
+<!-- Konto ï¿½bersicht Tabelle   -->
+<!-- <table mat-table [dataSource]="dataSource"> -->
 
-  <ng-container matColumnDef="iban">
-  <th mat-header-cell *matHeaderCellDef> IBAN </th>
-  <td mat-cell *matCellDef="let konto"> {{konto.iban}} </td>
-</ng-container>
+<!--   <ng-container matColumnDef="id"> -->
+<!--     <th mat-header-cell *matHeaderCellDef> Konto</th> -->
+<!--     <td mat-cell *matCellDef="let konto"> {{konto.id}}</td> -->
+<!--   </ng-container> -->
 
-  <ng-container matColumnDef="bic">
-  <th mat-header-cell *matHeaderCellDef> BIC </th>
-  <td mat-cell *matCellDef="let konto"> {{konto.bic}} </td>
-</ng-container>
+<!--   <ng-container matColumnDef="iban"> -->
+<!--     <th mat-header-cell *matHeaderCellDef> IBAN</th> -->
+<!--     <td mat-cell *matCellDef="let konto"> {{konto.iban}}</td> -->
+<!--   </ng-container> -->
 
-  <ng-container matColumnDef="umsatz">
-  <th mat-header-cell *matHeaderCellDef> Umsatz </th>
-  <td mat-cell *matCellDef="let konto"> {{konto.umsatz}} </td>
-</ng-container>
-  
-  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-<tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
-  
-</mat-table>
+<!--   <ng-container matColumnDef="bic"> -->
+<!--     <th mat-header-cell *matHeaderCellDef> BIC</th> -->
+<!--     <td mat-cell *matCellDef="let konto"> {{konto.bic}}</td> -->
+<!--   </ng-container> -->
+
+<!--   <ng-container matColumnDef="umsatz"> -->
+<!--     <th mat-header-cell *matHeaderCellDef> Umsatz</th> -->
+<!--     <td mat-cell *matCellDef="let konto"> {{konto.umsatz}}</td> -->
+<!--   </ng-container> -->
+
+<!--   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr> -->
+<!--   <tr mat-row data-toggle="modal" data-target="#exampleModal" *matRowDef="let row; columns: columnsToDisplay" -->
+<!--            (mouseover)="selectedRow = row" (click)="onRowClicked(row)" -->
+<!--            [ngClass]="{ 'selected': row === selectedRow }"></tr> -->
+
+<!-- </table> -->
+
+
+
+<div class="table-responsive body-manage-attendees">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col" >IBAN</th>
+                <th class="text-right" scope="col">Umsatz</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of this.konten" 
+            		(mouseover)="selectedRow = row" 
+            		(click)="onRowClicked(row)"
+            		routerLink="/umsatz-uebersicht/{{row.iban}}"
+            		>
+                <td >{{ row.id }}</td>
+                <td >{{ row.iban }}</td>
+                <td class="text-right">{{ row.umsatz }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
 <!-- paginate table -->
 <!-- <mat-paginator> -->
-  
-  
-<!-- click data row    -->
-<!-- <mat-row *matRowDef="let row; columns: columnsToDisplay"  -->
-<!--          (click)="onRowClicked(row)"> -->
-<!-- </mat-row>   -->
 
+
+<!--click data row-->
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> -->
+<!--   Launch demo modal -->
+<!-- </button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <h2>{{getSelectedRow()}}</h2>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--         <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>

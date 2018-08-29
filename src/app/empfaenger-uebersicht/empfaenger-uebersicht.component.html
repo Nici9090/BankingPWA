@@ -10,3 +10,25 @@
 <p>
   empfaenger-uebersicht works!
 </p>
+
+
+<div class="table-responsive body-manage-attendees">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col" >IBAN</th>
+                <th class="text-right" scope="col">Umsatz</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of this.konten" 
+            		data-toggle="modal" data-target="#exampleModal" 
+            		(mouseover)="selectedRow = row" (click)="onRowClicked(row)">
+                <td >{{ row.id }}</td>
+                <td >{{ row.iban }}</td>
+                <td class="text-right">{{ row.umsatz }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

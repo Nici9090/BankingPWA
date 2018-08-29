@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-registration-login-example": {
+    "banking-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-registration-login-example",
+            "outputPath": "dist/banking-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -21,6 +21,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/manifest.json",
               "src/manifest.json"
             ],
             "styles": [
@@ -44,25 +45,26 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "serviceWorker": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-registration-login-example:build"
+            "browserTarget": "banking-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-registration-login-example:build:production"
+              "browserTarget": "banking-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-registration-login-example:build"
+            "browserTarget": "banking-app:build"
           }
         },
         "test": {
@@ -78,7 +80,8 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json"
             ]
           }
         },
@@ -96,7 +99,7 @@
         }
       }
     },
-    "angular-registration-login-example-e2e": {
+    "banking-app-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -104,11 +107,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-registration-login-example:serve"
+            "devServerTarget": "banking-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-registration-login-example:serve:production"
+              "devServerTarget": "banking-app:serve:production"
             }
           }
         },
@@ -124,5 +127,5 @@
       }
     }
   },
-  "defaultProject": "angular-registration-login-example"
+  "defaultProject": "banking-app"
 }

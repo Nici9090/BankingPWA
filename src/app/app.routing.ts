@@ -18,6 +18,7 @@ import {AuthGuard} from './_guards';
 import {EmpfaengerUebersichtComponent} from './empfaenger-uebersicht/empfaenger-uebersicht.component';
 
 import {KontoUebersichtComponent} from './konto-uebersicht';
+import {UmsatzUebersichtComponent } from './umsatz-uebersicht/umsatz-uebersicht.component';
 
 
 const appRoutes: Routes = [
@@ -26,7 +27,7 @@ const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'konto-uebersicht', component: KontoUebersichtComponent, canActivate: [AuthGuard]},
   {path: 'empfaenger-uebersicht', component: EmpfaengerUebersichtComponent, canActivate: [AuthGuard]},
-
+  {path: 'umsatz-uebersicht/:iban', component: UmsatzUebersichtComponent, canActivate: [AuthGuard]},
 
   // otherwise redirect to home
   {path: '**', redirectTo: ''}
