@@ -13,7 +13,7 @@ export class Konto {
 //  bic: string;
 //  umsatz: number;
 
-  constructor(public id: number, public iban: string, public bic: string, public umsatz: number) {
+  constructor(public id: string, public iban: string, public bic: string, public umsatz: number) {
 
   }
 }

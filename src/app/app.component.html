@@ -22,10 +22,13 @@
 	<div class="collapse navbar-collapse" id="navbarText">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item" *ngIf="user">
-				<a class="nav-link"	routerLink="konto-uebersicht">KontoÃ¼bersicht</a>
+				<a class="nav-link"	routerLink="konto-uebersicht">Kontoübersicht</a>
 			</li>
 			<li class="nav-item" *ngIf="user">
-				<a class="nav-link"	routerLink="empfaenger-uebersicht">EmpfÃ¤ngerÃ¼bersicht</a>
+				<a class="nav-link"	routerLink="umsatz-uebersicht">Umsatzübersicht</a>
+			</li>
+			<li class="nav-item" *ngIf="user">
+				<a class="nav-link"	routerLink="empfaenger-uebersicht">Empfängerübersicht</a>
 			</li>
       <li *ngIf="user">
         <span class="navbar-text"> {{user.username}} </span>

@@ -40,9 +40,6 @@ import { UmsatzUebersichtComponent } from './umsatz-uebersicht/umsatz-uebersicht
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryKontoService, {dataEncapsulation: false}
     ),
-//    HttpClientInMemoryWebApiModule.forRoot(
-//    InMemoryUmsatzService, {dataEncapsulation: false}
-//    ),
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})],
   declarations: [
     AppComponent,
