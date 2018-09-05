@@ -1,6 +1,6 @@
-import { UmsatzRepresentation } from '../_models';
+import {UmsatzRepresentation} from '../_models';
 import {Umsatz} from '../_models/umsatz';
-import { KontoService } from '../_services/konto.service';
+import {KontoService} from '../_services/konto.service';
 import {UmsatzService} from '../_services/umsatz.service';
 import {AppComponent} from '../app.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -33,20 +33,49 @@ export class UmsatzUebersichtComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.iban = this.route.snapshot.paramMap.get('iban');
     this.getUmsaetze();
     this.getKonten();
-    this.iban = this.route.snapshot.paramMap.get('iban');
+
+    this.route.params.subscribe(
+      params => {
+        this.iban = params['iban'];
+        this.getUmsaetze();
+        this.getKonten();
+//        console.log(this.iban);
+      }
+    );
+
   }
+
+
+
 
   getUmsaetze(): void {
     this.umsatzService.getUmsaetze()
-    .subscribe(umsaetze => this.umsaetze = this.mapToRepresentation( this.sortByDate(this.filterByIban(umsaetze))));
+      .subscribe(umsaetze => this.umsaetze = this.mapToRepresentation(this.sortByDate(this.filterByIban(umsaetze))));
   }
 
   getKonten(): void {
     this.kontoService.getKonten()
-      .subscribe(konten => this.konten = konten);
+      .subscribe(konten => this.konten = this.filterKonten(konten));
   }
+
+  
+  filterKonten(konten: Konto[]) {
+ const ergebnis = [];
+    for (let i = 0; i < konten.length; i++) {
+      const konto = konten[i];
+      if (this.iban !== konto.iban) {
+        ergebnis.push(konto);
+      }
+    }
+    return ergebnis;
+  }
+
+
+  
+
 
   mapToRepresentation(umsaetze: Umsatz[]): UmsatzRepresentation[] {
 
@@ -80,21 +109,21 @@ export class UmsatzUebersichtComponent implements OnInit {
   }
 
   filterByIban(umsaetze: Umsatz[]) {
-      const ergebnis = [];
+    const ergebnis = [];
 
-      for (let i = 0; i < umsaetze.length; i++) {
-        const umsatz = umsaetze[i];
-        if (this.iban === umsatz.ibanAbs || this.iban === umsatz.ibanEmpf) {
-          ergebnis.push(umsatz);
-        }
+    for (let i = 0; i < umsaetze.length; i++) {
+      const umsatz = umsaetze[i];
+      if (this.iban === umsatz.ibanAbs || this.iban === umsatz.ibanEmpf) {
+        ergebnis.push(umsatz);
       }
+    }
 
-      return ergebnis;
+    return ergebnis;
   }
 
   sortByDate(umsaetze: Umsatz[]) {
     return umsaetze.sort((a, b) => this.compareDates(a, b));
-//    return umsaetze;
+    //    return umsaetze;
   }
 
   compareDates(a: any, b: any) {

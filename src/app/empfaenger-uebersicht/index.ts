@@ -1,0 +1,1 @@
+export * from './empfaenger-uebersicht.component';

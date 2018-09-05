@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+
+.jumbotron{
+ 	background-color: white; 
+ 	 word-wrap: break-word;
+}
+
+.table{
+	margin-top: 20px;
+
+        max-width: none;
+        table-layout: fixed;
+        word-wrap: break-word;
+        
+    }
+
+

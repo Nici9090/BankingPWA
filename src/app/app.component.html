@@ -1,20 +1,9 @@
-<!--  ##################################################
- #
- # Main APP Window
- #
- # Last Update:
- # 2018-07-26 : create by Login/Registration template
- #
- ################################################### -->
-
-
- <!--<div class="jumbotron">-->
 
  <!--Navigation menue-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
    <!--Hamburger-menue-->
-	<a class="navbar-brand" href="#">Navbar</a>
+	<a class="navbar-brand" href="#"><img src="/assets/piggy-bank_x64.png"></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarText" >
 		<span class="navbar-toggler-icon"></span>
@@ -22,13 +11,13 @@
 	<div class="collapse navbar-collapse" id="navbarText">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item" *ngIf="user">
-				<a class="nav-link"	routerLink="konto-uebersicht">Kontoübersicht</a>
+				<a class="nav-link"	routerLink="konto-uebersicht">KontoÃ¼bersicht</a>
 			</li>
 			<li class="nav-item" *ngIf="user">
-				<a class="nav-link"	routerLink="umsatz-uebersicht">Umsatzübersicht</a>
+				<a class="nav-link"	routerLink="umsatz-uebersicht">UmsatzÃ¼bersicht</a>
 			</li>
 			<li class="nav-item" *ngIf="user">
-				<a class="nav-link"	routerLink="empfaenger-uebersicht">Empfängerübersicht</a>
+				<a class="nav-link"	routerLink="empfaenger-uebersicht">EmpfÃ¤ngerÃ¼bersicht</a>
 			</li>
       <li *ngIf="user">
         <span class="navbar-text"> {{user.username}} </span>
@@ -40,8 +29,10 @@
 	</div>
 </nav>
 
-
-<div class="container">
+<!--  Content Container -->
+<div class="jumbotron">
+<div class="container-fluid
+">
 	<div class="row"></div>
 	<div class="row align-items-center">
  		<div class="col">
@@ -51,6 +42,9 @@
 	</div>
 	<div class="row"></div>
 </div>
+</div>
+
+
 <!-- </div> -->
 
 <!-- <nav class="navbar navbar-fixed-top navbar-light"> -->

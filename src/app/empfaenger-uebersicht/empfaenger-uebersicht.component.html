@@ -1,34 +1,74 @@
-<!--  ##################################################
- #
- # Emp�nger�bersicht window
- #
- # Last Update:
- # 2018-07-27 : create 
- #
- ################################################### -->
 
-<p>
-  empfaenger-uebersicht works!
-</p>
-
+<h2>Empfängerübersicht:</h2>
 
 <div class="table-responsive body-manage-attendees">
     <table class="table table-hover">
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col" >IBAN</th>
-                <th class="text-right" scope="col">Umsatz</th>
+                <th scope="col" >Empfänger</th>
+                <th scope="col">IBAN</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let row of this.konten" 
+            <tr *ngFor="let row of this.empf" 
             		data-toggle="modal" data-target="#exampleModal" 
-            		(mouseover)="selectedRow = row" (click)="onRowClicked(row)">
-                <td >{{ row.id }}</td>
+            		(mouseover)="selectedRow = row" 
+            		(click)="onRowClicked(row)">
+                <td >{{ row.empfName }}</td>
                 <td >{{ row.iban }}</td>
-                <td class="text-right">{{ row.umsatz }}</td>
             </tr>
         </tbody>
     </table>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Empfängerdetails</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <h2>{{getSelectedRow()}}</h2>
+				<div class="table-responsive body-manage-attendees">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Empfänger</th>
+								<th scope="col">{{selectedRow.empfName}}</th>
+						</thead>
+						<tbody>
+						<tr>
+								<td>IBAN</td>
+								<td>{{selectedRow.iban}}</td>
+							</tr>
+														<tr>
+								<td>BIC</td>
+								<td>{{selectedRow.bic}}</td>
+							</tr>
+														<tr>
+								<td>Verwendungszweck</td>
+								<td>{{selectedRow.vwzweck}}</td>
+							</tr>
+														<tr>
+								<td>Betrag</td>
+								<td>{{selectedRow.betrag}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--         <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
 </div>

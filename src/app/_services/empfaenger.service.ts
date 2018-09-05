@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {Konto, User} from '../_models';
-
+import {Empfaenger} from '../_models/empfaenger';
 
 
 
@@ -15,17 +15,17 @@ import {Konto, User} from '../_models';
   providedIn: 'root'
 })
 
-export class KontoService {
+export class EmpfaengerService {
 
-  private kontenUrl = 'api/konten'; // URL to web api
+  private empfUrl = 'api/empf'; // URL to web api
 
   constructor(private http: HttpClient) {}
 
-  getKonten(): Observable<Konto[]> {
-    return this.http.get<Konto[]>(this.kontenUrl);
+  getEmpf(): Observable<Empfaenger[]> {
+    return this.http.get<Empfaenger[]>(this.empfUrl);
   }
 
   getById(id: number) {
-    return this.http.get(this.kontenUrl + id);
+    return this.http.get(this.empfUrl + id);
   }
 }

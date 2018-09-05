@@ -1,54 +1,15 @@
-<!--  ##################################################
- #
- # Konto�bersicht window
- #
- # Last Update:
- # 2018-07-27 : create 
- # 2018-08-05 : add Konto �bersicht Tabelle  tutorial: https://blog.angular-university.io/angular-material-data-table/
- ################################################### -->
-
-
-
 <!-- #######################   -->
-<!-- Konto �bersicht Tabelle   -->
-<!-- <table mat-table [dataSource]="dataSource"> -->
-
-<!--   <ng-container matColumnDef="id"> -->
-<!--     <th mat-header-cell *matHeaderCellDef> Konto</th> -->
-<!--     <td mat-cell *matCellDef="let konto"> {{konto.id}}</td> -->
-<!--   </ng-container> -->
-
-<!--   <ng-container matColumnDef="iban"> -->
-<!--     <th mat-header-cell *matHeaderCellDef> IBAN</th> -->
-<!--     <td mat-cell *matCellDef="let konto"> {{konto.iban}}</td> -->
-<!--   </ng-container> -->
-
-<!--   <ng-container matColumnDef="bic"> -->
-<!--     <th mat-header-cell *matHeaderCellDef> BIC</th> -->
-<!--     <td mat-cell *matCellDef="let konto"> {{konto.bic}}</td> -->
-<!--   </ng-container> -->
-
-<!--   <ng-container matColumnDef="umsatz"> -->
-<!--     <th mat-header-cell *matHeaderCellDef> Umsatz</th> -->
-<!--     <td mat-cell *matCellDef="let konto"> {{konto.umsatz}}</td> -->
-<!--   </ng-container> -->
-
-<!--   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr> -->
-<!--   <tr mat-row data-toggle="modal" data-target="#exampleModal" *matRowDef="let row; columns: columnsToDisplay" -->
-<!--            (mouseover)="selectedRow = row" (click)="onRowClicked(row)" -->
-<!--            [ngClass]="{ 'selected': row === selectedRow }"></tr> -->
-
-<!-- </table> -->
+<!-- Kontoübersicht Tabelle   -->
 
 
+<h2>Ihre Konten auf einen Blick:</h2>
 
 <div class="table-responsive body-manage-attendees">
     <table class="table table-hover">
         <thead>
             <tr>
-                <th scope="col">ID</th>
                 <th scope="col" >IBAN</th>
-                <th class="text-right" scope="col">Umsatz</th>
+                <th class="text-right" scope="col">Saldo</th>
             </tr>
         </thead>
         <tbody>
@@ -57,7 +18,6 @@
             		(click)="onRowClicked(row)"
             		routerLink="/umsatz-uebersicht/{{row.iban}}"
             		>
-                <td >{{ row.id }}</td>
                 <td >{{ row.iban }}</td>
                 <td class="text-right">{{ row.umsatz }}</td>
             </tr>
@@ -67,15 +27,7 @@
 
 
 
-<!-- paginate table -->
-<!-- <mat-paginator> -->
 
-
-<!--click data row-->
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> -->
-<!--   Launch demo modal -->
-<!-- </button> -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
